@@ -5,7 +5,6 @@ This is the PyTorch implementation of the ConGraD method in our paper:
 
 **Drinking from a Firehose: Continual Learning with Web-scale Natural Language**<br>
 Hexiang Hu, Ozan Sener, Fei Sha, Vladlen Koltun<br>
-Under Review
 
 [[arXiv](http://hexiang-hu.github.io)] [[GitHub](https://github.com/hexiang-hu/congrad)]
 
