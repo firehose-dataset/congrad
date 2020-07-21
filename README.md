@@ -14,7 +14,7 @@ Continual learning systems will interact with humans, with each other, and with 
 
 ## The Firehose Datasets
 
-To facilitate research on POLL, we collect massive datasets of Twitter posts. These datasets, [Firehose10M and Firehose100M](https://github.com/hexiang-hu/firehose), comprise `100 million` tweets, posted by one million users over `six years`.
+To facilitate research on POLL, we collect massive datasets of Twitter posts. These datasets, [Firehose10M](https://github.com/firehose-dataset/congrad/tree/master/data/Firehose10M) and [Firehose100M](https://github.com/firehose-dataset/congrad/tree/master/data/Firehose100M), comprise `100 million` tweets, posted by one million users over `six years`.
 
 <img src="teaser/user-activity-distrib.png" width="100%">
 
@@ -23,13 +23,13 @@ Above visualizes the user activity distribution of the Firehose dataset, which p
 
 | Datasets            | Num Users | Num Tweets | Num Tokens |
 |:-------------------:|:---------:|:----------:|:----------:|
-| Firehose10M 			  |   94.0K   |   10.4M    |   173.3M   |
+| Firehose10M 	      |   94.0K   |   10.4M    |   173.3M   |
 | Firehose100M        |   917.4K  |   100.4M   |   1672.7M  |
 
 
 ## ConGraD: Continual Gradient Descent
 
-The standard optimizer for CL is online gradient descent with a fixed number of gradient steps at each time step. The number of gradient steps per iteration is critical as it directly affects learning and generalization. An excessive number of gradient steps hurt generalization; whereas, an insufficient number of steps impair learning. We propose to adaptively control the number of gradient steps using an online validation buffer. The key idea is to use part of the online data to measure generalization and adapt the optimization accordingly. We present a simple strategy to keep this buffer without wasting any data. The resulting continual gradient descent method (ConGraD) significantly outperforms prior continual learning schemes on the [Firehose](https://github.com/hexiang-hu/firehose) datasets.
+The standard optimizer for CL is online gradient descent with a fixed number of gradient steps at each time step. The number of gradient steps per iteration is critical as it directly affects learning and generalization. An excessive number of gradient steps hurt generalization; whereas, an insufficient number of steps impair learning. We propose to adaptively control the number of gradient steps using an online validation buffer. The key idea is to use part of the online data to measure generalization and adapt the optimization accordingly. We present a simple strategy to keep this buffer without wasting any data. The resulting continual gradient descent method (ConGraD) significantly outperforms prior continual learning schemes on the Firehose datasets.
 
 
 ## Expriments
