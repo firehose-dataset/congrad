@@ -58,6 +58,14 @@ bash scripts/train_f10m.sh 256 128 128 1 3 5 \
  		--init_weight data/pretrained_weights/stl.pretrained.pt
 ```
 
+If you would like to use multiple GPUs for training, please set up the arguments ``--multi_gpu''.
+
+## Software Requirements
+
+This software supports PyTorch v1.2 (with CUDAv9.2). For PyTorch version higher than 1.2, there is an identified issue with the multi-GPU support (in higher version of PyTorch, ParameterList is not replicated to all GPU devices and need an extra fix).
+
+Please note that all the results reported in the paper are based on PyTorch v1.2. Refer to [this page](https://pytorch.org/get-started/previous-versions/) for installing early version of PyTorch.
+
 ## Usages
 
 Please refer to the what follows for a complete view of all program arguments:

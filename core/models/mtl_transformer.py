@@ -62,7 +62,7 @@ class MTLMemTransformerLM(MemTransformerLM):
 
         logit, new_mems = self.forward_model(data, user, mems, tgt_len=tgt_len)
         logit  = logit.view(-1, logit.size(-1))
-        target = target.view(-1)
+        target = target.reshape(-1)
 
         nll  = F.nll_loss(
                     F.log_softmax(logit, dim=-1),

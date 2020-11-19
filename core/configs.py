@@ -4,6 +4,8 @@ import argparse
 
 def get_basic_parser():
     parser = argparse.ArgumentParser(description='Transformer Language Model', add_help=False)
+    parser.add_argument('--gpu0_bsz', type=int, default=-1,
+                                help='batch size on gpu 0')
     parser.add_argument('--n_layer', type=int, default=12,
                         help='number of total layers')
     parser.add_argument('--n_head', type=int, default=10,
