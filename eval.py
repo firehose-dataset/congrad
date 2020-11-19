@@ -31,17 +31,6 @@ def postprocess_args(args):
     args.tie_weight = not args.not_tied
     args.d_embed = args.d_model if args.d_embed < 0 else args.d_embed
     assert args.batch_size % args.batch_chunk == 0
-    # Validate `--fp16` option
-    if args.fp16:
-        if not args.cuda:
-            print('WARNING: --fp16 requires --cuda, ignoring --fp16 option')
-            args.fp16 = False
-        else:
-            try:
-                from apex.fp16_utils import FP16_Optimizer
-            except:
-                print('WARNING: apex not installed, ignoring --fp16 option')
-                args.fp16 = False
 
     return args
 
@@ -102,7 +91,7 @@ if __name__ == '__main__':
     postprocess_args(args)
     print("Evaluating {}".format(args.model_dir))
 
-    corpus = get_lm_corpus(args.data, args.dataset, args.vocab_file, args.cased, use_bos=args.use_bos)
+    corpus = get_lm_corpus(args.data, args.dataset, args.vocab_file, args.cased)
 
     # Use the actual number of tokens from dictionary
     ntokens = len(corpus.vocab)
