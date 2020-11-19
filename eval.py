@@ -13,7 +13,6 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
-from ipdb import launch_ipdb_on_exception
 from collections import defaultdict
 
 from core.dataset import get_lm_corpus
@@ -129,13 +128,11 @@ if __name__ == '__main__':
     model.same_length = args.same_length
     model.clamp_len = args.clamp_len
 
-    with launch_ipdb_on_exception():
-        print(' * start evaluating model...')
-        token_loss, word_loss, user_total_loss, user_word_len = batch_evaluate(data_iter, model, args, verbose=True)
-        print(' | {} token/word ppl {:9.3f} / {:9.3f} '.format(args.split, math.exp(token_loss), math.exp(word_loss)))
+    print(' * start evaluating model...')
+    token_loss, word_loss, user_total_loss, user_word_len = batch_evaluate(data_iter, model, args, verbose=True)
+    print(' | {} token/word ppl {:9.3f} / {:9.3f} '.format(args.split, math.exp(token_loss), math.exp(word_loss)))
 
-        print('Saving user word ppl files to: {}'.format(os.path.join(args.model_dir, 'user_wppl.pt')))
-        torch.save({'total_loss': user_total_loss,
-                    'word_len': user_word_len },
-                    os.path.join(args.model_dir, 'user_rst.pt'))
-        from IPython import embed; embed()
+    print('Saving user word ppl files to: {}'.format(os.path.join(args.model_dir, 'user_wppl.pt')))
+    torch.save({'total_loss': user_total_loss,
+                'word_len': user_word_len },
+                os.path.join(args.model_dir, 'user_rst.pt'))
